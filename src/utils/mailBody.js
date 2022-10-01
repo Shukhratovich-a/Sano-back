@@ -75,7 +75,7 @@ const mailBody = (firstname, surname, time) => {
                                 "
                               >
                                 <img
-                                  src="http://localhost:2349/logo.svg"
+                                  src="https://epic-sano.herokuapp.com/logo.svg"
                                   width="120px"
                                   class="CToWUd"
                                 />
