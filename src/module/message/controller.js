@@ -13,8 +13,8 @@ export default {
         to: mail,
         subject: "Спасибо, что посетили наш сайт.",
         text: `Привет ${firstname} ${surname}. Мы получили ваше сообщение. Мы свяжемся с вами в ближайшее время.`,
-        html: mailBody(firstname, surname, Date.now()),
-        amp: mailBody(firstname, surname, Date.now()),
+        html: mailBody(firstname, surname, mail, phone, organization, message, Date.now()),
+        amp: mailBody(firstname, surname, mail, phone, organization, message, Date.now()),
       });
 
       if (!resp) return next(new RequestError(400, "Bad request"));

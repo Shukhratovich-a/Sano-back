@@ -1,6 +1,6 @@
 import normalizeTime from "../utils/normalizeDate.js";
 
-const mailBody = (firstname, surname, time) => {
+const mailBody = (firstname, surname, mail, phone, organization, message, time) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -91,9 +91,9 @@ const mailBody = (firstname, surname, time) => {
                                   height: 50px;
                                 "
                               >
-                                <div style="color: #828282; font-size: 14px">${normalizeTime(
-                                  time
-                                )}</div>
+                                <div style="color: #828282; font-size: 14px">
+                                  ${normalizeTime(time)}
+                                </div>
                               </td>
                             </tr>
                           </tbody>
@@ -116,7 +116,9 @@ const mailBody = (firstname, surname, time) => {
                               <td
                                 style="padding-top: 30px; padding-bottom: 5px; background-color: white"
                               >
-                                <span style="font-size: 20px; color: #363636">Привет <b>${firstname} ${surname}</b></span>
+                                <span style="font-size: 20px; color: #363636"
+                                  >Привет <b>${firstname} ${surname}</b></span
+                                >
                               </td>
                             </tr>
 
@@ -146,6 +148,82 @@ const mailBody = (firstname, surname, time) => {
                                 </div>
                               </td>
                             </tr>
+
+                            <tr>
+                              <td
+                                style="
+                                  padding: 10px 0px;
+                                  background-color: white;
+                                  border-collapse: collapse;
+                                "
+                              >
+                                <div style="font-size: 18px; color: #363636; font-weight: normal">
+                                  Ваш номер.
+                                </div>
+                                <div style="font-size: 18px; color: #828282; font-weight: normal">
+                                  <a href="tel:${phone}" style="color: #828282; text-decoration: none;">+${phone}</a>
+                                </div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td
+                                style="
+                                  padding: 10px 0px;
+                                  background-color: white;
+                                  border-collapse: collapse;
+                                "
+                              >
+                                <div style="font-size: 18px; color: #363636; font-weight: normal">
+                                  Ваша почта.
+                                </div>
+                                <div style="font-size: 18px; color: #828282; font-weight: normal">
+                                  ${mail}
+                                </div>
+                              </td>
+                            </tr>
+
+                            ${
+                              organization
+                                ? `<tr>
+                                <td
+                                  style="
+                                  padding: 10px 0px;
+                                  background-color: white;
+                                  border-collapse: collapse;
+                                "
+                                >
+                                  <div style="font-size: 18px; color: #363636; font-weight: normal">
+                                    Ваша компания.
+                                  </div>
+                                  <div style="font-size: 18px; color: #828282; font-weight: normal">
+                                    ${organization}
+                                  </div>
+                                </td>
+                              </tr>`
+                                : ""
+                            }
+
+                            ${
+                              message
+                                ? `<tr>
+                                <td
+                                  style="
+                                  padding: 10px 0px;
+                                  background-color: white;
+                                  border-collapse: collapse;
+                                "
+                                >
+                                  <div style="font-size: 18px; color: #363636; font-weight: normal">
+                                    Вашe сообщение.
+                                  </div>
+                                  <div style="font-size: 18px; color: #828282; font-weight: normal">
+                                  ${message}
+                                  </div>
+                                </td>
+                              </tr>`
+                                : ""
+                            }                         
                           </tbody>
                         </table>
                       </td>
@@ -157,7 +235,7 @@ const mailBody = (firstname, surname, time) => {
           </tbody>
         </table>
       </body>
-    </html>
+    </html>  
   `;
 };
 export default mailBody;
