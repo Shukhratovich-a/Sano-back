@@ -1,6 +1,8 @@
 import wrapedSendMail from "../../utils/mailer.js";
 import mailBody from "../../utils/mailBody.js";
 
+import { MAIL } from "../../config.js";
+
 import { InternalServerError, RequestError } from "../../utils/error.js";
 
 export default {
@@ -9,7 +11,7 @@ export default {
       const { firstname, surname, mail, phone, organization, message } = req.body;
 
       const resp = await wrapedSendMail({
-        from: "'Sano Agency' <ggrom298@gmail.com>",
+        from: `'Sano Agency' <${MAIL}>`,
         to: mail,
         subject: "Спасибо, что посетили наш сайт.",
         text: `Привет ${firstname} ${surname}. Мы получили ваше сообщение. Мы свяжемся с вами в ближайшее время.`,

@@ -161,7 +161,7 @@ const mailBody = (firstname, surname, mail, phone, organization, message, time) 
                                   Ваш номер.
                                 </div>
                                 <div style="font-size: 18px; color: #828282; font-weight: normal">
-                                  <a href="tel:${phone}" style="color: #828282; text-decoration: none;">+${phone}</a>
+                                  <a href="tel:${phone}" style="color: #828282;">+${phone}</a>
                                 </div>
                               </td>
                             </tr>
@@ -178,7 +178,7 @@ const mailBody = (firstname, surname, mail, phone, organization, message, time) 
                                   Ваша почта.
                                 </div>
                                 <div style="font-size: 18px; color: #828282; font-weight: normal">
-                                  ${mail}
+                                  <a href="mailto:${mail}" style="color: #828282;">${mail}</a>
                                 </div>
                               </td>
                             </tr>
